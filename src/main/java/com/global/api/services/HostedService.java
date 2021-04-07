@@ -92,7 +92,7 @@ public class HostedService {
         trans.setCvnResponseCode(response.getString("CVNRESULT"));
         trans.setResponseCode(result);
         trans.setResponseMessage(message);
-        trans.setAvsResponseCode(response.getString("AVSPOSTCODERESULT"));
+        trans.setAvsPostcodeResponseCode(response.getString("AVSPOSTCODERESULT"));
         trans.setTimestamp(timestamp);
         trans.setTransactionReference(ref);
         trans.setResponseValues(rvalues);

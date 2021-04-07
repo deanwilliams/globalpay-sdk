@@ -8,7 +8,7 @@ public class TransactionResponse extends BillPayResponseBase<Transaction> {
         
         result.setResponseCode(response.getString("a:ResponseCode"));
         result.setResponseMessage(getFirstResponseMessage(response));
-        result.setAvsResponseCode(response.getString("a:AvsResponseCode"));
+        result.setAvsPostcodeResponseCode(response.getString("a:AvsResponseCode"));
         result.setAvsResponseMessage(response.getString("a:AvsResponseText"));
         result.setCvnResponseCode(response.getString("a:CvvResponseCode"));
         result.setCvnResponseMessage(response.getString("a:CvvResponseText"));

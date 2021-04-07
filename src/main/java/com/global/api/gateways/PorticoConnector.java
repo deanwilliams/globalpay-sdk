@@ -702,7 +702,7 @@ public class PorticoConnector extends XmlGateway implements IPaymentGateway, IRe
         else {
             result.setAuthorizedAmount(root.getDecimal("AuthAmt"));
             result.setAvailableBalance(root.getDecimal("AvailableBalance"));
-            result.setAvsResponseCode(root.getString("AVSRsltCode"));
+            result.setAvsPostcodeResponseCode(root.getString("AVSRsltCode"));
             result.setAvsResponseMessage(root.getString("AVSRsltText"));
             result.setBalanceAmount(root.getDecimal("BalanceAmt"));
             result.setCardType(root.getString("CardType"));

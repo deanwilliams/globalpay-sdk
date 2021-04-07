@@ -38,7 +38,8 @@ public class RealexHppResponseTests {
 
         assertEquals("12345", response.getAuthorizationCode());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("M", response.getAvsResponseCode());
+        assertEquals("M", response.getAvsAddressResponseCode());
+        assertEquals("M", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("00", response.getResponseCode());
         assertEquals("[ test system ] Authorised", response.getResponseMessage());
@@ -53,7 +54,8 @@ public class RealexHppResponseTests {
 
         assertEquals("12345", response.getAuthorizationCode());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("M", response.getAvsResponseCode());
+        assertEquals("M", response.getAvsAddressResponseCode());
+        assertEquals("M", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("00", response.getResponseCode());
         assertEquals("[ test system ] Authorised", response.getResponseMessage());
@@ -82,7 +84,8 @@ public class RealexHppResponseTests {
         assertEquals("Fails Fraud Checks", response.getResponseMessage());
         assertEquals("", response.getAuthorizationCode());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("U", response.getAvsResponseCode());
+        assertEquals("U", response.getAvsAddressResponseCode());
+        assertEquals("U", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("15016893697197771", response.getTransactionId());
         assertEquals("U", response.getCvnResponseCode());
@@ -97,7 +100,8 @@ public class RealexHppResponseTests {
         assertEquals("[ test system ] DECLINED", response.getResponseMessage());
         assertEquals("", response.getAuthorizationCode());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("M", response.getAvsResponseCode());
+        assertEquals("M", response.getAvsAddressResponseCode());
+        assertEquals("M", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("15016900517792053", response.getTransactionId());
         assertEquals("N", response.getCvnResponseCode());
@@ -178,7 +182,8 @@ public class RealexHppResponseTests {
 
         assertEquals("12345", response.getAuthorizationCode());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("M", response.getAvsResponseCode());
+        assertEquals("M", response.getAvsAddressResponseCode());
+        assertEquals("M", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("00", response.getResponseCode());
         assertEquals("[ test system ] Authorised", response.getResponseMessage());
@@ -219,7 +224,8 @@ public class RealexHppResponseTests {
 
         assertEquals("12345", response.getAuthorizationCode());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("M", response.getAvsResponseCode());
+        assertEquals("M", response.getAvsAddressResponseCode());
+        assertEquals("M", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("00", response.getResponseCode());
         assertEquals("[ test system ] Authorised", response.getResponseMessage());
@@ -236,7 +242,8 @@ public class RealexHppResponseTests {
         assertEquals("12345", response.getAuthorizationCode());
         assertEquals("MULTI", response.getAutoSettleFlag());
         assertEquals(new BigDecimal("1999"), response.getAuthorizedAmount());
-        assertEquals("M", response.getAvsResponseCode());
+        assertEquals("M", response.getAvsAddressResponseCode());
+        assertEquals("M", response.getAvsPostcodeResponseCode());
         assertEquals("GTI5Yxb0SumL_TkDMCAxQA", response.getOrderId());
         assertEquals("00", response.getResponseCode());
         assertEquals("[ test system ] Authorised", response.getResponseMessage());
