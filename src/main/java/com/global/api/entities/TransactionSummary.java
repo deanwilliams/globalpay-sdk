@@ -22,7 +22,8 @@ public class TransactionSummary {
     private String acquirerReferenceNumber;
     private BigDecimal authorizedAmount;
     private String authCode;
-    private String avsResponseCode;
+    private String avsPostcodeResponseCode;
+    private String avsAddressResponseCode;
     private DateTime batchCloseDate;
     private String batchId;
     private String batchSequenceNumber;

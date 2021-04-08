@@ -973,7 +973,8 @@ public class RealexConnector extends XmlGateway implements IPaymentGateway, IRec
                 summary.setClientTransactionId(response.getString("orderid"));
                 summary.setAuthCode(response.getString("authcode"));
                 summary.setMaskedCardNumber(response.getString("cardnumber"));
-                summary.setAvsResponseCode(response.getString("avspostcoderesponse"));
+                summary.setAvsPostcodeResponseCode(response.getString("avspostcoderesponse"));
+                summary.setAvsAddressResponseCode(response.getString("avsaddressresponse"));
                 summary.setCvnResponseCode(response.getString("cvnresult"));
                 summary.setGatewayResponseCode(response.getString("result"));
                 summary.setGatewayResponseMessage(response.getString("message"));
