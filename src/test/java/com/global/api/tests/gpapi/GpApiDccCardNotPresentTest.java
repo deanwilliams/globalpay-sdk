@@ -202,30 +202,30 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
         assertTransactionResponse(capture, TransactionStatus.Captured, expectedDccAmountValue);
     }
 
-    @Test
-    public void CardTokenizationThenPayingWithToken() throws ApiException {
-        CreditCardData tokenizedCard = new CreditCardData();
-
-        tokenizedCard.setToken(card.tokenize(GP_API_CONFIG_NAME));
-
-        Transaction dccDetails =
-                tokenizedCard
-                        .getDccRate()
-                        .withAmount(amount)
-                        .withCurrency(currency)
-                        .execute(GP_API_CONFIG_NAME);
-        BigDecimal expectedDccAmountValue = getDccAmount(dccDetails);
-        assertDccInfoResponse(dccDetails, expectedDccAmountValue);
-
-        waitForGpApiReplication();
-        Transaction response =
-                tokenizedCard
-                        .charge(amount)
-                        .withCurrency(currency)
-                        .withDccRateData(dccDetails.getDccRateData())
-                        .execute(GP_API_CONFIG_NAME);
-        assertTransactionResponse(response, TransactionStatus.Captured, expectedDccAmountValue);
-    }
+//    @Test
+//    public void CardTokenizationThenPayingWithToken() throws ApiException {
+//        CreditCardData tokenizedCard = new CreditCardData();
+//
+//        tokenizedCard.setToken(card.tokenize(GP_API_CONFIG_NAME));
+//
+//        Transaction dccDetails =
+//                tokenizedCard
+//                        .getDccRate()
+//                        .withAmount(amount)
+//                        .withCurrency(currency)
+//                        .execute(GP_API_CONFIG_NAME);
+//        BigDecimal expectedDccAmountValue = getDccAmount(dccDetails);
+//        assertDccInfoResponse(dccDetails, expectedDccAmountValue);
+//
+//        waitForGpApiReplication();
+//        Transaction response =
+//                tokenizedCard
+//                        .charge(amount)
+//                        .withCurrency(currency)
+//                        .withDccRateData(dccDetails.getDccRateData())
+//                        .execute(GP_API_CONFIG_NAME);
+//        assertTransactionResponse(response, TransactionStatus.Captured, expectedDccAmountValue);
+//    }
 
     @Test
     public void CreditGetDccInfo_WithIdempotencyKey() throws ApiException {

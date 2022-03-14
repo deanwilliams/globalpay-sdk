@@ -128,7 +128,7 @@ public class GpApiAvsCheckTests extends BaseGpApiTest {
             assertEquals(transactionStatus.getValue(), response.getResponseMessage());
 
             assertEquals(cvnResponseMessage, response.getCvnResponseMessage());
-            assertEquals(avsResponseCode, response.getAvsResponseCode());
+            assertEquals(avsResponseCode, response.getAvsPostcodeResponseCode());
             assertEquals(avsAddressResponse, response.getAvsAddressResponse());
         }
     }
