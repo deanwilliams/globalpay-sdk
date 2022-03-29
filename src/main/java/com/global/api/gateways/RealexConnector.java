@@ -1166,7 +1166,7 @@ public class RealexConnector extends XmlGateway implements IPaymentGateway, IRec
             case "payment-set":
                 return Arrays.asList("01", "00");
             default:
-                return Arrays.asList("00");
+                return Arrays.asList("00", "101", "102", "103", "111");
         }
     }
 
