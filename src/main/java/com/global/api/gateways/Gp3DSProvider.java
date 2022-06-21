@@ -109,7 +109,7 @@ public class Gp3DSProvider extends RestGateway implements ISecure3dProvider {
                     .set("authentication_source", builder.getAuthenticationSource())
                     .set("authentication_request_type", builder.getAuthenticationRequestType())
                     .set("message_category", builder.getMessageCategory())
-                    .set("message_version", "2.1.0")
+                    .set("message_version", "2.2.0")
                     .set("server_trans_id", secureEcom.getServerTransactionId())
                     .set("merchant_id", merchantId)
                     .set("account_id", accountId)
