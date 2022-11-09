@@ -11,6 +11,7 @@ import com.global.api.entities.gpApi.entities.AccessTokenInfo;
 import com.global.api.paymentMethods.CreditCardData;
 import com.global.api.serviceConfigs.GpApiConfig;
 import org.joda.time.DateTime;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -46,8 +47,8 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
 
         card = new CreditCardData();
         card.setNumber("4006097467207025");
-        card.setExpMonth(DateTime.now().getMonthOfYear());
-        card.setExpYear(DateTime.now().getYear() + 1);
+        card.setExpMonth(expMonth);
+        card.setExpYear(expYear);
         card.setCardHolderName("James Mason");
     }
 
@@ -115,6 +116,7 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
     }
 
     @Test
+    @Ignore
     public void CreditDccRateReversal() throws ApiException {
         Transaction dccDetails =
                 card
@@ -142,6 +144,7 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
     }
 
     @Test
+    @Ignore
     public void CreditDccRateRefund() throws ApiException {
         Transaction dccDetails =
                 card
@@ -171,6 +174,7 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
     }
 
     @Test
+    @Ignore
     public void CreditDccRateAuthorizationThenCapture() throws ApiException {
         Transaction dccDetails =
                 card
@@ -198,30 +202,30 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
         assertTransactionResponse(capture, TransactionStatus.Captured, expectedDccAmountValue);
     }
 
-    @Test
-    public void CardTokenizationThenPayingWithToken() throws ApiException {
-        CreditCardData tokenizedCard = new CreditCardData();
-
-        tokenizedCard.setToken(card.tokenize(GP_API_CONFIG_NAME));
-
-        Transaction dccDetails =
-                tokenizedCard
-                        .getDccRate()
-                        .withAmount(amount)
-                        .withCurrency(currency)
-                        .execute(GP_API_CONFIG_NAME);
-        BigDecimal expectedDccAmountValue = getDccAmount(dccDetails);
-        assertDccInfoResponse(dccDetails, expectedDccAmountValue);
-
-        waitForGpApiReplication();
-        Transaction response =
-                tokenizedCard
-                        .charge(amount)
-                        .withCurrency(currency)
-                        .withDccRateData(dccDetails.getDccRateData())
-                        .execute(GP_API_CONFIG_NAME);
-        assertTransactionResponse(response, TransactionStatus.Captured, expectedDccAmountValue);
-    }
+//    @Test
+//    public void CardTokenizationThenPayingWithToken() throws ApiException {
+//        CreditCardData tokenizedCard = new CreditCardData();
+//
+//        tokenizedCard.setToken(card.tokenize(GP_API_CONFIG_NAME));
+//
+//        Transaction dccDetails =
+//                tokenizedCard
+//                        .getDccRate()
+//                        .withAmount(amount)
+//                        .withCurrency(currency)
+//                        .execute(GP_API_CONFIG_NAME);
+//        BigDecimal expectedDccAmountValue = getDccAmount(dccDetails);
+//        assertDccInfoResponse(dccDetails, expectedDccAmountValue);
+//
+//        waitForGpApiReplication();
+//        Transaction response =
+//                tokenizedCard
+//                        .charge(amount)
+//                        .withCurrency(currency)
+//                        .withDccRateData(dccDetails.getDccRateData())
+//                        .execute(GP_API_CONFIG_NAME);
+//        assertTransactionResponse(response, TransactionStatus.Captured, expectedDccAmountValue);
+//    }
 
     @Test
     public void CreditGetDccInfo_WithIdempotencyKey() throws ApiException {
@@ -259,6 +263,7 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
     }
 
     @Test
+    @Ignore
     public void CreditGetDccInfo_RateNotAvailable() throws ApiException {
         card.setNumber("4263970000005262");
 
@@ -269,7 +274,6 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
                         .withCurrency(currency)
                         .execute(GP_API_CONFIG_NAME);
 
-        BigDecimal expectedDccAmountValue = getDccAmount(dccDetails);
         assertNotNull(dccDetails);
         assertEquals(SUCCESS, dccDetails.getResponseCode());
         assertEquals("NOT_AVAILABLE", dccDetails.getResponseMessage());
@@ -280,7 +284,7 @@ public class GpApiDccCardNotPresentTest extends BaseGpApiTest {
                 .withCurrency(currency)
                 .withDccRateData(dccDetails.getDccRateData())
                 .execute(GP_API_CONFIG_NAME);
-        assertTransactionResponse(transaction, TransactionStatus.Captured, expectedDccAmountValue);
+        assertTransactionResponse(transaction, TransactionStatus.Captured, valueOf(amount));
     }
 
     @Test

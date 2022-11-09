@@ -279,6 +279,7 @@ public class Realex3dSecureTests {
         card.setExpMonth(12);
         card.setExpYear(2025);
         card.setCardHolderName("Philip Marlowe");
+        card.setThreeDSecure(secureEcom);
 
         Transaction response = card.charge(new BigDecimal("10"))
                 .withCurrency("EUR")

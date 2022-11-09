@@ -194,7 +194,8 @@ public class RealexHppClient {
         response.set("RESULT", trans.getResponseCode());
         response.set("PASREF", trans.getTransactionId());
         response.set("AUTHCODE", trans.getAuthorizationCode());
-        response.set("AVSPOSTCODERESULT", trans.getAvsResponseCode());
+        response.set("AVSPOSTCODERESULT", trans.getAvsPostcodeResponseCode());
+        response.set("AVSADDRESSRESULT", trans.getAvsAddressResponseCode());
         response.set("CVNRESULT", trans.getCvnResponseCode());
         response.set("HPP_LANG", request.getString("HPP_LANG"));
         response.set("SHIPPING_CODE", request.getString("SHIPPING_CODE"));

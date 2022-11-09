@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-public class PorticoConnector extends XmlGateway implements IPaymentGateway {
+public class PorticoConnector extends XmlGateway implements IPaymentGateway, IReportingService {
     private int siteId;
     private int licenseId;
     private int deviceId;
@@ -227,7 +227,8 @@ public class PorticoConnector extends XmlGateway implements IPaymentGateway {
                     if(builder.getEmvChipCondition() != null)
                         chipCondition = builder.getEmvChipCondition() == EmvChipCondition.ChipFailPreviousSuccess ? "CHIP_FAILED_PREV_SUCCESS" : "CHIP_FAILED_PREV_FAILED";
 
-                    et.subElement(block1, "AccountType", builder.getAccountType());
+                    et.subElement(block1, "AccountType",
+                            EnumUtils.getMapping(Target.Portico, builder.getAccountType()));
                     et.subElement(block1, "EMVChipCondition", chipCondition);
                     et.subElement(block1, "MessageAuthenticationCode", builder.getMessageAuthenticationCode());
                     et.subElement(block1, "PosSequenceNbr", builder.getPosSequenceNumber());
@@ -275,7 +276,8 @@ public class PorticoConnector extends XmlGateway implements IPaymentGateway {
                 et.subElement(accountInfo, "AccountNumber", check.getAccountNumber());
                 et.subElement(accountInfo, "CheckNumber", check.getCheckNumber());
                 et.subElement(accountInfo, "MICRData", check.getMicrNumber());
-                et.subElement(accountInfo, "AccountType", check.getAccountType());
+                et.subElement(accountInfo, "AccountType", EnumUtils.getMapping(Target.Portico,
+                        check.getAccountType()));
             }
             else et.subElement(block1, "TokenValue").text(tokenValue);
 
@@ -700,7 +702,7 @@ public class PorticoConnector extends XmlGateway implements IPaymentGateway {
         else {
             result.setAuthorizedAmount(root.getDecimal("AuthAmt"));
             result.setAvailableBalance(root.getDecimal("AvailableBalance"));
-            result.setAvsResponseCode(root.getString("AVSRsltCode"));
+            result.setAvsPostcodeResponseCode(root.getString("AVSRsltCode"));
             result.setAvsResponseMessage(root.getString("AVSRsltText"));
             result.setBalanceAmount(root.getDecimal("BalanceAmt"));
             result.setCardType(root.getString("CardType"));

@@ -25,7 +25,8 @@ public class Transaction {
     private BigDecimal authorizedAmount;
     @Getter @Setter private String autoSettleFlag;
     private BigDecimal availableBalance;
-    private String avsResponseCode;
+    private String avsPostcodeResponseCode;
+    private String avsAddressResponseCode;
     private String avsResponseMessage;
     public String avsAddressResponse;
     private BigDecimal balanceAmount;
@@ -113,12 +114,14 @@ public class Transaction {
     public void setAvailableBalance(BigDecimal availableBalance) {
         this.availableBalance = availableBalance;
     }
-    public String getAvsResponseCode() {
-        return avsResponseCode;
+    public String getAvsAddressResponseCode() {
+        return avsAddressResponseCode;
     }
-    public void setAvsResponseCode(String avsResponseCode) {
-        this.avsResponseCode = avsResponseCode;
+    public void setAvsAddressResponseCode(String avsAddressResponseCode) { this.avsAddressResponseCode = avsAddressResponseCode; }
+    public String getAvsPostcodeResponseCode() {
+        return avsPostcodeResponseCode;
     }
+    public void setAvsPostcodeResponseCode(String avsPostcodeResponseCode) { this.avsPostcodeResponseCode = avsPostcodeResponseCode; }
     public String getAvsResponseMessage() {
         return avsResponseMessage;
     }

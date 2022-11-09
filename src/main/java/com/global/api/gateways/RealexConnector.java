@@ -822,7 +822,8 @@ public class RealexConnector extends XmlGateway implements IPaymentGateway, IRec
         result.setResponseCode(root.getString("result"));
         result.setResponseMessage(root.getString("message"));
         result.setCvnResponseCode(root.getString("cvnresult"));
-        result.setAvsResponseCode(root.getString("avspostcoderesponse"));
+        result.setAvsAddressResponseCode(root.getString("avsaddressresponse"));
+        result.setAvsPostcodeResponseCode(root.getString("avspostcoderesponse"));
         result.setTimestamp(root.getAttributeString("timestamp"));
 
         TransactionReference transReference = new TransactionReference();
@@ -972,7 +973,8 @@ public class RealexConnector extends XmlGateway implements IPaymentGateway, IRec
                 summary.setClientTransactionId(response.getString("orderid"));
                 summary.setAuthCode(response.getString("authcode"));
                 summary.setMaskedCardNumber(response.getString("cardnumber"));
-                summary.setAvsResponseCode(response.getString("avspostcoderesponse"));
+                summary.setAvsPostcodeResponseCode(response.getString("avspostcoderesponse"));
+                summary.setAvsAddressResponseCode(response.getString("avsaddressresponse"));
                 summary.setCvnResponseCode(response.getString("cvnresult"));
                 summary.setGatewayResponseCode(response.getString("result"));
                 summary.setGatewayResponseMessage(response.getString("message"));
@@ -1164,7 +1166,7 @@ public class RealexConnector extends XmlGateway implements IPaymentGateway, IRec
             case "payment-set":
                 return Arrays.asList("01", "00");
             default:
-                return Arrays.asList("00");
+                return Arrays.asList("00", "101", "102", "103", "111");
         }
     }
 

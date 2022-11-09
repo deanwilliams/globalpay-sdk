@@ -417,7 +417,7 @@ public class GpApiMappingTests extends BaseGpApiTest {
                 assertEquals(card.getString("brand"), transaction.getCardType());
                 assertEquals(card.getString("masked_number_last4"), transaction.getCardLast4());
                 assertEquals(card.getString("cvv_result"), transaction.getCvnResponseMessage());
-                assertEquals(card.getString("avs_postal_code_result"), transaction.getAvsResponseCode());
+                assertEquals(card.getString("avs_postal_code_result"), transaction.getAvsPostcodeResponseCode());
                 assertEquals(card.getString("avs_address_result"), transaction.getAvsAddressResponse());
                 assertEquals(card.getString("avs_action"), transaction.getAvsResponseMessage());
             }
